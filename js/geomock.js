@@ -157,7 +157,8 @@ geomock.go = function() {
 		
 			// Show the map panel
 			setTimeout(function() { 
-				gm_panel.style.height = "500px"; 
+				var h = 0.9 * window.innerHeight;
+				gm_panel.style.height = h + "px"; 
 				setTimeout(function() { document.body.appendChild(s) }, 250);
 			 }, 1);
 		}, function() {});
