@@ -99,7 +99,7 @@ geomock.go = function() {
 			// Import GMaps Javascript
 			var s = document.createElement('script');
 			s.type = 'text/javascript';
-			s.src = "http://maps.googleapis.com/maps/api/js?sensor=true&region=GB&callback=geomock.init";
+			s.src = "http://maps.googleapis.com/maps/api/js?sensor=true&region=sg&callback=geomock.init";
 
 
 			// Create and configure map panel
