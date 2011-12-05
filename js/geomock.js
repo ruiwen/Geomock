@@ -102,6 +102,7 @@ geomock.go = function() {
 			s.src = "http://maps.googleapis.com/maps/api/js?sensor=true&region=GB&callback=geomock.init";
 
 
+			// Create and configure map panel
 			var gm_panel = document.createElement('div');
 			gm_panel.id = "gm_panel"
 
@@ -122,24 +123,24 @@ geomock.go = function() {
 			gm_panel.style.zIndex = 999;
 			
 
+			// Create containing div
 			var gm = document.createElement('div')
 			gm.id = geomock.map_id;
 			gm.style.height = "100%";
 			gm.style.backgroundColor = 'pink';
 
+
+			// Add map to container
 			gm_panel.appendChild(gm);
 
 			document.body.appendChild(gm_panel);
 			
 		
+			// Show the map panel
 			setTimeout(function() { 
 				gm_panel.style.height = "500px"; 
 				setTimeout(function() { document.body.appendChild(s) }, 250);
 			 }, 1);
 		}, function() {});
-
-		
 	}
-
-
 }
