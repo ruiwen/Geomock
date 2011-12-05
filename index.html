@@ -14,6 +14,9 @@
 		<section id="content">
 			<h1>This is some content</h1>
 			<input type="button" onclick="javascript:geomock.go()" value="Geomock Go">
+			<input type="button" onclick="javascript:plot_pos()" value="Plot position">
+
+			<div id="test_map" style="height: 300px;"></div>
 		</section>
 
 		<footer id="footer">
@@ -21,5 +24,50 @@
 
 		<!-- Javascript -->
 		<script src="js/geomock.js"></script>
+
+		<!-- Other stuff -->
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=true&region=sg&callback=map_init"></script>
+		<script>
+			var test_map = null;
+			var test_map_marker = null;
+			var map_init = function() {
+				navigator.geolocation.getCurrentPosition(function(pos) {
+					var c = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+					
+					if(!test_map) {
+						test_map = new google.maps.Map(document.getElementById("test_map"), {
+							center: c,
+							mapTypeId: google.maps.MapTypeId.ROADMAP,
+							zoom: 14
+						});
+					}
+
+					test_map_marker = new google.maps.Marker({
+						animation: google.maps.Animation.BOUNCE,
+						position: c,
+						icon: "http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png",
+						map: test_map
+					})
+				})
+			}
+
+			var plot_pos = function() {
+				navigator.geolocation.getCurrentPosition(function(pos) {
+					var c = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+					if(!test_map_marker) {
+						test_map_marker = new google.maps.Marker({
+							animation: google.maps.Animation.BOUNCE,
+							position: c,
+							icon: "http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png",
+							map: test_map
+						})
+					}
+					else {
+						test_map_marker.setPosition(c);
+					}
+				});
+			}
+		</script>
+
 	</body>
 </html>
