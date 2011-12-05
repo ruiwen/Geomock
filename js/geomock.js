@@ -119,6 +119,7 @@ geomock.go = function() {
 			//gm_panel.style.webkitTransform = "translateZ(0)";
 			gm_panel.style.height = "0px";
 			//gm_panel.style.width = "90%";
+			gm_panel.style.zIndex = 999;
 			
 
 			var gm = document.createElement('div')
