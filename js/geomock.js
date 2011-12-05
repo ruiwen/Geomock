@@ -126,15 +126,34 @@ geomock.go = function() {
 			// Create containing div
 			var gm = document.createElement('div')
 			gm.id = geomock.map_id;
-			gm.style.height = "100%";
+			gm.style.height = "98%";
 			gm.style.backgroundColor = 'pink';
 
 
 			// Add map to container
 			gm_panel.appendChild(gm);
 
-			document.body.appendChild(gm_panel);
-			
+
+			// Add close button
+			var c = document.createElement('div');
+			c.innerHTML = '[ close ]';
+			c.style.fontFamily = "Helvetica, Arial, sans-serif";
+			c.style.fontSize = "small";
+			c.style.color = "grey";
+			c.style.margin = "5px";
+
+			gm_panel.appendChild(c);
+			c.addEventListener('click', function(e) {
+				var gmp = document.getElementById('gm_panel');
+				gmp.style.height = "0px";
+
+				setTimeout(function(){
+					document.body.removeChild(gmp);
+				}, 350)
+			}, false)
+
+
+			document.body.appendChild(gm_panel);	
 		
 			// Show the map panel
 			setTimeout(function() { 
