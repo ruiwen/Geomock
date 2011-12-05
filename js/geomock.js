@@ -102,7 +102,7 @@ geomock.go = function() {
 			s.src = "http://maps.googleapis.com/maps/api/js?sensor=true&region=sg&callback=geomock.init";
 
 
-			// Create and configure map panel
+			// Create and configure containing panel
 			var gm_panel = document.createElement('div');
 			gm_panel.id = "gm_panel"
 
@@ -123,7 +123,7 @@ geomock.go = function() {
 			gm_panel.style.zIndex = 999;
 			
 
-			// Create containing div
+			// Create map div
 			var gm = document.createElement('div')
 			gm.id = geomock.map_id;
 			gm.style.height = "98%";
