@@ -159,7 +159,14 @@ geomock.go = function() {
 			setTimeout(function() { 
 				var h = 0.9 * window.innerHeight;
 				gm_panel.style.height = h + "px"; 
-				setTimeout(function() { document.body.appendChild(s) }, 250);
+				setTimeout(function() { 
+					if(typeof(google) == 'undefined' || typeof(google.maps) == 'undefined') {
+						document.body.appendChild(s)	
+					}
+					else {
+						geomock.init();
+					}					
+				}, 250);
 			 }, 1);
 		}, function() {});
 	}
