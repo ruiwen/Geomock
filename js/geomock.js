@@ -88,7 +88,9 @@ geomock.watchPosition = function(success, error, opts) {
 geomock.go = function() {
 	// Nerf the real geolocation poll
 	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(pos) {
+		var poll = (typeof(geomock._getCurrentPosition) == 'function')?geomock._getCurrentPosition:navigator.geolocation.getCurrentPosition;
+
+		poll.call(navigator.geolocation, function(pos) {
 			
 			if(!geomock.mock_pos.coords) { 
 				geomock.mock_pos.coords = {} 
