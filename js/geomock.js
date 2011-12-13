@@ -32,13 +32,16 @@ geomock.init = function() {
 		geomock._markPosition(new google.maps.LatLng(geomock.mock_pos.coords.latitude, geomock.mock_pos.coords.longitude));
 	})
 
+	geomock._replaceMethods();
+}
+
+geomock._replaceMethods = function() {
 	// Substitue native geolocation methods with our own
 	geomock._getCurrentPosition = navigator.geolocation.getCurrentPosition;
 	navigator.geolocation.getCurrentPosition = geomock.getCurrentPosition;
 
 	geomock._watchPosition = navigator.geolocation.watchPosition;
 	navigator.geolocation.watchPosition = geomock.watchPosition;
-
 }
 
 geomock._markPosition = function(ll) {
